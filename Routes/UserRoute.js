@@ -162,4 +162,9 @@ userRouter.post('/my-profile',verifyJWT,async(req,res)=>{
     phone:response.rows[0].phone
   }});
 })
+userRouter.post('/notification',verifyJWT,async(req,res)=>{
+
+  const response = await client.query('select message from notifications where user_id=$1',[req.user.id]);
+  res.status(200).json({messages:response.rows});
+})
 module.exports = userRouter;
