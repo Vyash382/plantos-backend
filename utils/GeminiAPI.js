@@ -16,8 +16,8 @@ function parseSchedule(rawString) {
   return tasks.map((taskEntry) => {
     const [datetime, task] = taskEntry.split("->");
     const [datePart, timePart] = datetime.trim().split(" ");
-    const [day, month, year] = datePart.split("-");
-    const formattedDate = `${year}-${day}-${month}`;
+    const [year, month, day] = datePart.split("-");
+    const formattedDate = `${year}-${month}-${day}`;
     return {
       date: formattedDate,
       time: timePart,
@@ -39,7 +39,7 @@ async function gemini(species, disease, city) {
         role: "user",
         parts: [
           {
-            text: `plant:${species} disease:${disease}, create a 3 day care schedule with date and time for it. Date should be in 'YYYY-MM-DD' format .Like "2025-12-07 15:00->Water the plant -- 2025-06-22 17:00->fertilize the plant -- ..." in this format. Each care task should be not more than 30 words. Do not add unnecessary headings or footings. Consider 3 day weather also ${stringgg}`,
+            text: `plant:${species} disease:${disease}, create a 3 day care schedule with date and time for it.Like "2025-07-12 15:00->Water the plant -- 2025-06-22 17:00->fertilize the plant -- ..." in this format. Each care task should be not more than 30 words. Do not add unnecessary headings or footings. Consider 3 day weather also ${stringgg}`,
           },
         ],
       },
