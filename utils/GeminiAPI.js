@@ -17,7 +17,7 @@ function parseSchedule(rawString) {
     const [datetime, task] = taskEntry.split("->");
     const [datePart, timePart] = datetime.trim().split(" ");
     const [day, month, year] = datePart.split("-");
-    const formattedDate = `${year}-${month}-${day}`;
+    const formattedDate = `${year}-${day}-${month}`;
     return {
       date: formattedDate,
       time: timePart,
